@@ -42,7 +42,7 @@ Arquivo: `processed/ideb_rj.csv.gz`. UTF-8, vírgula como separador, ponto decim
 
 `ND`: participantes insuficientes no Saeb; `ND*`: não divulgação solicitada nas portarias citadas pela fonte; `ND***`: extravio de pelo menos 20% do material e participação insuficiente. `-`: ausência sem motivo específico determinado nesta auditoria. Marcadores preservados por variável; não inferir um motivo a partir de outro componente.
 
-As nomenclaturas SI e 1ª–4ª série foram mantidas conforme os cabeçalhos técnicos. Não equiparar automaticamente cada sufixo a um ano escolar atual. Aprovação em % não equivale ao indicador P (proporção de rendimento). Matemática e português estão na escala Saeb, não na escala 0–10. N é a nota padronizada usada com P na composição do Ideb.
+As nomenclaturas SI e 1ª a 4ª série foram mantidas conforme os cabeçalhos técnicos. Não equiparar automaticamente cada sufixo a um ano escolar atual. Aprovação em % não equivale ao indicador P (proporção de rendimento). Matemática e português estão na escala Saeb, não na escala 0 a 10. N é a nota padronizada usada com P na composição do Ideb.
 
 `meta` e `meta_original` vazios em 2005/2023/2025 significam inexistência de meta desse primeiro ciclo na planilha, não descumprimento. Não extrapolar metas.
 

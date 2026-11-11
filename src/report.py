@@ -29,14 +29,14 @@ def figures(results: dict, assets: Path) -> None:
     ax.fill_between(s.ano, s.q1, s.q3, alpha=.16, color=BLUE, label="Intervalo interquartil")
     ax.plot(s.ano, s.mediana, "o-", color=BLUE, label="Mediana disponível")
     ax.plot(b.ano, b.mediana, "s--", color=TEAL, label=f"Painel completo (n={results['metrics']['painel_balanceado_n']})")
-    ax.set(xlabel="Edição", ylabel="Ideb (0–10)", ylim=(0, 10), xticks=s.ano)
+    ax.set(xlabel="Edição", ylabel="Ideb (0 a 10)", ylim=(0, 10), xticks=s.ano)
     ax.legend(loc="lower right", frameon=False); ax.grid(axis="y", alpha=.15)
     q = go.Figure()
     q.add_scatter(x=s.ano.tolist(), y=s.q3.tolist(), line=dict(width=0), showlegend=False, hoverinfo="skip")
-    q.add_scatter(x=s.ano.tolist(), y=s.q1.tolist(), fill="tonexty", fillcolor="rgba(35,74,128,.15)", line=dict(width=0), name="Q1–Q3")
+    q.add_scatter(x=s.ano.tolist(), y=s.q1.tolist(), fill="tonexty", fillcolor="rgba(35,74,128,.15)", line=dict(width=0), name="Q1 a Q3")
     q.add_scatter(x=s.ano.tolist(), y=s.mediana.tolist(), mode="lines+markers", name="Mediana disponível", line=dict(color=BLUE), customdata=s.n.tolist(), hovertemplate="%{x}: %{y:.2f}<br>Municípios: %{customdata}<extra></extra>")
     q.add_scatter(x=b.ano.tolist(), y=b.mediana.tolist(), mode="lines+markers", name=f"Painel completo (n={results['metrics']['painel_balanceado_n']})", line=dict(color=TEAL, dash="dash"))
-    q.update_yaxes(range=[0, 10], title="Ideb (0–10)"); q.update_xaxes(title="Edição", tickvals=s.ano.tolist())
+    q.update_yaxes(range=[0, 10], title="Ideb (0 a 10)"); q.update_xaxes(title="Edição", tickvals=s.ano.tolist())
     plots["evolucao"] = fig, q
 
     fig, ax = plt.subplots(figsize=(10, 4.8), layout="constrained")
@@ -44,11 +44,11 @@ def figures(results: dict, assets: Path) -> None:
     boxes = ax.boxplot(groups, tick_labels=years, patch_artist=True, widths=.55)
     for patch in boxes["boxes"]: patch.set(facecolor="#d7e4f2", edgecolor=BLUE)
     for line in boxes["medians"]: line.set(color=TEAL, linewidth=2)
-    ax.set(xlabel="Edição", ylabel="Ideb (0–10)", ylim=(0, 10)); ax.grid(axis="y", alpha=.15)
+    ax.set(xlabel="Edição", ylabel="Ideb (0 a 10)", ylim=(0, 10)); ax.grid(axis="y", alpha=.15)
     q = go.Figure()
     for year, group in zip(years, groups):
         q.add_trace(go.Box(y=group.tolist(), name=str(year), quartilemethod="linear", boxpoints="outliers", marker_color=BLUE, showlegend=False))
-    q.update_yaxes(range=[0, 10], title="Ideb (0–10)"); q.update_xaxes(title="Edição")
+    q.update_yaxes(range=[0, 10], title="Ideb (0 a 10)"); q.update_xaxes(title="Edição")
     plots["distribuicao"] = fig, q
 
     fig, ax = plt.subplots(figsize=(8, 5.4), layout="constrained")
@@ -59,9 +59,9 @@ def figures(results: dict, assets: Path) -> None:
         ax.scatter(group.ideb_2023, group.ideb_2025, color=color, alpha=.8, s=34, label=f"{label} (n={len(group)})")
         q.add_scatter(x=group.ideb_2023.tolist(), y=group.ideb_2025.tolist(), mode="markers", name=f"{label} (n={len(group)})", text=group.municipio.tolist(), marker=dict(color=color, size=9), hovertemplate="%{text}<br>2023: %{x:.1f}<br>2025: %{y:.1f}<extra></extra>")
     ax.plot([0, 10], [0, 10], "--", color="#777777", linewidth=1)
-    ax.set(xlabel="Ideb 2023 (0–10)", ylabel="Ideb 2025 (0–10)", xlim=(0, 10), ylim=(0, 10)); ax.legend(frameon=False)
+    ax.set(xlabel="Ideb 2023 (0 a 10)", ylabel="Ideb 2025 (0 a 10)", xlim=(0, 10), ylim=(0, 10)); ax.legend(frameon=False)
     q.add_shape(type="line", x0=0, y0=0, x1=10, y1=10, line=dict(color="gray", dash="dash"))
-    q.update_xaxes(range=[0, 10], title="Ideb 2023 (0–10)"); q.update_yaxes(range=[0, 10], title="Ideb 2025 (0–10)")
+    q.update_xaxes(range=[0, 10], title="Ideb 2023 (0 a 10)"); q.update_yaxes(range=[0, 10], title="Ideb 2025 (0 a 10)")
     plots["comparacao"] = fig, q
 
     fig, ax = plt.subplots(figsize=(9, 4.6), layout="constrained")

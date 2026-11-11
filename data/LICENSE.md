@@ -1,7 +1,7 @@
 # Origem, atribuição e condições de reutilização dos dados
 
 Fonte primária declarada: MEC / Instituto Nacional de Estudos e Pesquisas
-Educacionais Anísio Teixeira (Inep). Resultados do Ideb 2005–2025, municípios,
+Educacionais Anísio Teixeira (Inep). Resultados do Ideb 2005 a 2025, municípios,
 ensino fundamental regular, anos iniciais.
 
 Catálogo: https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb/resultados/2005-2025

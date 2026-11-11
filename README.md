@@ -1,8 +1,8 @@
-# Ideb nas redes municipais do Rio de Janeiro — 2005–2025
+# Ideb nas redes municipais do Rio de Janeiro: 2005 a 2025
 
 **Pedro Artur Brandão Murillo e Daniel de Oliveira Teixeira Silva**<br>
 Unilasalle-RJ · Bacharelado em Sistemas de Informação · 6º período · 2026<br>
-Linguagem de Programação — Análise e Visualização de Dados com Python
+Linguagem de Programação: Análise e Visualização de Dados com Python
 
 ![Python 3.14](https://img.shields.io/badge/Python-3.14-blue)
 ![Código MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-green)
@@ -21,12 +21,12 @@ Python; princípios FAIR.
 
 ## Perguntas e achados
 
-1. **RQ1 — Evolução:** a mediana do Ideb passou de 3,9 (2005) para 5,9 (2025).
+1. **RQ1: Evolução:** a mediana do Ideb passou de 3,9 (2005) para 5,9 (2025).
    No painel dos mesmos 82 municípios com resultado em todas as edições, os
    extremos também são 3,9 e 5,9.
-2. **RQ2 — Dispersão:** o intervalo interquartil passou de 0,600 para 0,725.
+2. **RQ2: Dispersão:** o intervalo interquartil passou de 0,600 para 0,725.
    Melhora do nível central não equivale a convergência uniforme entre redes.
-3. **RQ3 — Mudança recente:** entre 2023 e 2025, 82 municípios aumentaram o Ideb,
+3. **RQ3: Mudança recente:** entre 2023 e 2025, 82 municípios aumentaram o Ideb,
    seis diminuíram e quatro mantiveram o índice divulgado. As contribuições
    médias de rendimento e nota ao produto P×N foram positivas.
 
@@ -53,7 +53,7 @@ Não se preenchem resultados ausentes, não se removem outliers automaticamente
 e não se extrapolam metas além de 2021. `Municipal` e `Pública` não são somadas.
 As notas internas e a inspeção inicial permanecem em `data/inspection/`.
 
-## Reprodução — Windows / PowerShell
+## Reprodução: Windows / PowerShell
 
 Ambiente validado: **Python 3.14.7, Windows**, UTF-8. As versões diretas e
 transitivas foram congeladas por `pip freeze` em um ambiente virtual novo.
@@ -115,7 +115,7 @@ silenciosa. Nenhum código do ZIP é executado.
 ```
 
 Altere o conteúdo editorial em `src/article.html` e execute o pipeline para
-atualizar `docs/index.html`. O resumo respeita 150–250 palavras. As figuras
+atualizar `docs/index.html`. O resumo respeita 150 a 250 palavras. As figuras
 vetoriais aparecem sem JavaScript; os gráficos interativos usam dados exportados
 e carregam a biblioteca local apenas quando solicitados. Os CSVs das figuras
 podem ser baixados na própria página.

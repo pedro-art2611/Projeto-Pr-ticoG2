@@ -6,11 +6,11 @@ root = Path(__file__).resolve().parents[1]
 markdown = nb.v4.new_markdown_cell
 code = nb.v4.new_code_cell
 cells = [
-    markdown("""# Ideb nas redes municipais fluminenses — análise exploratória
+    markdown("""# Ideb nas redes municipais fluminenses: análise exploratória
 **Pedro Artur Brandão Murillo e Daniel de Oliveira Teixeira Silva**<br>
 Unilasalle-RJ · Sistemas de Informação · Linguagem de Programação · 6º período · 2026
 
-Recorte: RJ, rede Municipal, anos iniciais, 2005–2025. A fonte é a cópia arquivada documentada em `proveniencia.json`; a comparação dos bytes com a fonte oficial permanece pendente. Não há imputação nem inferência causal.
+Recorte: RJ, rede Municipal, anos iniciais, 2005 a 2025. A fonte é a cópia arquivada documentada em `proveniencia.json`; a comparação dos bytes com a fonte oficial permanece pendente. Não há imputação nem inferência causal.
 
 RQ1: como evoluiu o nível central? RQ2: como variou a dispersão? RQ3: como mudaram o índice e seus componentes entre 2023 e 2025?"""),
     code('''from pathlib import Path
@@ -37,14 +37,14 @@ display(data.loc[data.ideb.isna(), ["codigo_municipio", "municipio", "ano", "ide
 assert len(data) == 1012
 assert data.ideb.isna().sum() == 14
 assert not data.duplicated(["codigo_municipio", "rede", "etapa", "ano"]).any()'''),
-    markdown("""## RQ1 — Nível central e painel completo
-Mediana de todos os resultados disponíveis e painel dos mesmos municípios em todas as edições. A faixa é Q1–Q3, não intervalo de confiança. Cada município recebe igual peso."""),
+    markdown("""## RQ1: Nível central e painel completo
+Mediana de todos os resultados disponíveis e painel dos mesmos municípios em todas as edições. A faixa é Q1 a Q3, não intervalo de confiança. Cada município recebe igual peso."""),
     code('''display(results["summary"])
 display(results["balanced"])
 display(SVG(filename=str(ROOT / "docs/assets/evolucao.svg")))
 m = results["metrics"]
 print(f"Medianas: {m['mediana_2005']:.1f} → {m['mediana_2025']:.1f}; painel completo: {m['painel_balanceado_n']} municípios.")'''),
-    markdown("""## RQ2 — Dispersão e extremos
+    markdown("""## RQ2: Dispersão e extremos
 Quartis com interpolação linear; desvio-padrão populacional (ddof=0). Extremos pelo critério de 1,5 IQR são inspecionados e mantidos, não classificados automaticamente como erros."""),
     code('''display(SVG(filename=str(ROOT / "docs/assets/distribuicao.svg")))
 last = data.loc[data.ano == 2025].dropna(subset=["ideb"])
@@ -52,7 +52,7 @@ q1, q3 = last.ideb.quantile([.25, .75]); iqr = q3 - q1
 extremos = last.loc[(last.ideb < q1 - 1.5*iqr) | (last.ideb > q3 + 1.5*iqr), ["codigo_municipio", "municipio", "ideb"]]
 display(extremos)
 print(f"IQR: {m['iqr_2005']:.3f} → {m['iqr_2025']:.3f}. Nenhum extremo removido.")'''),
-    markdown("""## RQ3 — Pares 2023–2025 e identidade do índice
+    markdown("""## RQ3: Pares 2023 a 2025 e identidade do índice
 A junção é um a um, com 92 pares completos. A decomposição simétrica é Δ(PN) = média(N)ΔP + média(P)ΔN. É algébrica, não causal. A diferença para ΔIdeb divulgado é o residual de arredondamento."""),
     code('''paired = results["paired"]
 display(paired.trajetoria.value_counts())
