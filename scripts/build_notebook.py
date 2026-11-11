@@ -10,7 +10,7 @@ cells = [
 **Pedro Artur Brandão Murillo e Daniel de Oliveira Teixeira Silva**<br>
 Unilasalle-RJ · Sistemas de Informação · Linguagem de Programação · 6º período · 2026
 
-Recorte: RJ, rede Municipal, anos iniciais, 2005 a 2025. A fonte é a cópia arquivada documentada em `proveniencia.json`; a comparação dos bytes com a fonte oficial permanece pendente. Não há imputação nem inferência causal.
+Recorte: RJ, rede Municipal, anos iniciais, 2005 a 2025. A cópia arquivada foi comparada com download do endereço oficial do Inep via HTTP, com igualdade byte a byte. Origem e protocolo estão em `proveniencia.json`. Não há imputação nem inferência causal.
 
 RQ1: como evoluiu o nível central? RQ2: como variou a dispersão? RQ3: como mudaram o índice e seus componentes entre 2023 e 2025?"""),
     code('''from pathlib import Path
@@ -62,10 +62,16 @@ display(SVG(filename=str(ROOT / "docs/assets/componentes.svg")))
 import numpy as np
 np.testing.assert_allclose(paired.contribuicao_rendimento + paired.contribuicao_nota, paired.delta_produto, atol=1e-12)
 print(f"Aumentaram: {m['aumentou']}; diminuíram: {m['diminuiu']}; estáveis: {m['estavel']}.")'''),
+    markdown("""### Associação entre os resultados de 2023 e 2025
+Pearson descreve a associação linear dos níveis. Spearman descreve a associação dos postos, usando postos médios para empates. Somente pares completos e finitos entram no cálculo. A proximidade dos coeficientes não implica ranking invariável nem relação causal. Não se correlaciona o índice com seus fatores para apresentar uma identidade algébrica como descoberta independente."""),
+    code('''display(results["correlations"])
+print(f"Pearson: {m['correlacao_pearson']:.3f}; Spearman: {m['correlacao_spearman']:.3f}.")
+assert results["correlations"].n_pares.eq(92).all()
+assert results["correlations"].coeficiente.between(-1, 1).all()'''),
     markdown("""## Síntese, limites e reprodução
 A mediana aumentou entre os extremos; o IQR também aumentou, sem convergência uniforme. Na comparação recente predominam aumentos, com contribuições médias positivas de P e N. Essas conclusões não identificam causas nem desigualdades individuais.
 
-2021 exige cautela; cobertura variável, arredondamento, agregação e origem em espelho limitam a interpretação. Licença dos dados e comparação dos bytes oficiais estão pendentes. Código MIT; texto e figuras autorais CC BY 4.0. Veja `data/data_dictionary.md`, `README.md`, `VALIDACAO.md` e as referências do artigo em `docs/index.html`. A execução integral usa `python -m src.report`."""),
+2021 exige cautela; cobertura variável, arredondamento, agregação e obtenção oficial por HTTP limitam a interpretação. As condições de reuso estão documentadas em `data/LICENSE.md`: regime federal de livre utilização dos resultados originais, atribuição ao Inep e CC BY 4.0 para contribuições autorais. Código MIT; texto e figuras autorais CC BY 4.0. Veja `data/data_dictionary.md`, `README.md`, `VALIDACAO.md` e as referências do artigo em `docs/index.html`. A execução integral usa `python -m src.report`."""),
 ]
 book = nb.v4.new_notebook(cells=cells, metadata={
     "kernelspec": {"display_name": "Python 3 (Ideb RJ)", "language": "python", "name": "python3"},

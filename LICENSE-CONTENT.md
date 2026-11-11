@@ -10,6 +10,8 @@ autores, indicação de alterações e referência à licença, sem restrições
 Termos completos: https://creativecommons.org/licenses/by/4.0/legalcode.pt
 
 Esta licença não abrange os dados de terceiros, o catálogo do Inep, as planilhas
-originais, nem bibliotecas de software. Consulte `data/LICENSE.md` e as licenças
+originais, nem bibliotecas de software. As contribuições autorais às tabelas
+derivadas e o regime de livre utilização dos dados estão em `data/LICENSE.md`.
+Consulte também as licenças
 das dependências. O arquivo `docs/assets/plotly.min.js` mantém os avisos MIT
 incluídos na distribuição do Plotly.

@@ -29,6 +29,8 @@ Python; princípios FAIR.
 3. **RQ3: Mudança recente:** entre 2023 e 2025, 82 municípios aumentaram o Ideb,
    seis diminuíram e quatro mantiveram o índice divulgado. As contribuições
    médias de rendimento e nota ao produto P×N foram positivas.
+   Pearson (0,826) e Spearman (0,828) mostraram associação positiva dos níveis
+   municipais entre os dois anos, sem interpretação causal.
 
 São 1.012 observações município/edição, com 998 Idebs válidos e 14 ausentes.
 Essas estatísticas são entre municípios, sem peso por matrículas; não são o
@@ -40,11 +42,12 @@ Ideb oficial do estado. A decomposição dos componentes é algébrica, não cau
 Arquivo: `divulgacao_anos_iniciais_municipios_2025.zip`, aba
 `IDEB_AI_MUNICÍPIOS`, cabeçalho técnico na linha 10.
 
-O ZIP de 25,3 MB está versionado em `data/raw/`. Foi obtido de um espelho do
-Transparência Política, pois o download oficial falhou. **A correspondência
-com os bytes atuais do Inep ainda não foi confirmada.** O SHA-256 da entrada
-e o MD5 interno do XLSX são verificados pelo pipeline. Isso confirma integridade
-da versão fixada, não autenticação independente de sua origem.
+O ZIP de 25,3 MB está versionado em `data/raw/`. A coleta inicial veio do
+Transparência Política. Em 11/11/2026, foi comparado com o arquivo baixado do
+endereço oficial do Inep via HTTP: **os 25.308.289 bytes são iguais** e o SHA-256
+coincide. O HTTPS falhou nesta coleta; o protocolo HTTP e a ausência de
+autenticação TLS estão registrados em `proveniencia.json`. O pipeline verifica
+o SHA-256 fixado e o MD5 interno do XLSX a cada execução.
 
 SHA-256 da entrada:
 `89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7`.
@@ -105,6 +108,7 @@ silenciosa. Nenhum código do ZIP é executado.
 │   ├── __init__.py
 │   ├── etl.py                 # Ingestão, integridade, schema, normalização
 │   ├── analysis.py            # Estatísticas, painel e decomposição pareada
+│   ├── metadata.py            # Tipos, unidades e cálculos de todos os derivados
 │   ├── report.py              # Figuras e geração do artigo
 │   └── article.html           # Fonte editorial; index.html é gerado
 ├── scripts/                   # Notebook, verificação do site e reprodução
@@ -129,12 +133,15 @@ podem ser baixados na própria página.
 | Interoperável | CSV UTF-8, JSON, SVG, código municipal e dicionário completo |
 | Reutilizável | Código MIT, texto e figuras CC BY 4.0, versões fixadas e instruções |
 
-O software está sob [MIT](LICENSE); texto e figuras autorais sob
-[CC BY 4.0](LICENSE-CONTENT.md). Os dados e suas transformações mantêm a
-atribuição ao Inep e as condições da fonte. **A licença específica da base ainda
-precisa de confirmação**, conforme [data/LICENSE.md](data/LICENSE.md). Não
-declaramos conformidade FAIR integral nem certificação enquanto essa questão
-e a comparação oficial estiverem pendentes.
+O software está sob [MIT](LICENSE); texto, figuras e contribuições autorais às
+tabelas sob [CC BY 4.0](LICENSE-CONTENT.md). Para os resultados públicos do Inep,
+o projeto adota o regime de livre utilização do art. 4º do Decreto nº 8.777/2016,
+na redação atualizada, mantendo atribuição e eventuais direitos de terceiros.
+O fundamento, sua aplicação e os limites estão em [data/LICENSE.md](data/LICENSE.md).
+Não se atribui uma licença CC ao ZIP original. O dicionário cobre as 31 colunas
+da tabela principal e cada variável dos CSVs e JSONs derivados. O atendimento
+aos itens FAIR da disciplina está registrado em `VALIDACAO.md`; não há
+certificação externa FAIR.
 
 ## Publicação e limites
 

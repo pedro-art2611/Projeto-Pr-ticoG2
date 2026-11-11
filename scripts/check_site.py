@@ -28,4 +28,8 @@ words = len(summary.split())
 assert 150 <= words <= 250, f"Resumo: {words} palavras"
 assert "${" not in text, "Placeholder não substituído"
 assert "Pedro Artur Brandão Murillo e Daniel de Oliveira Teixeira Silva" in text
+assert all(section in p.ids for section in ["introducao", "metodologia", "resultados", "conclusao", "fair", "referencias"])
+assert "Pearson r =" in text and "Spearman ρ =" in text
+assert "Decreto nº 8.777/2016" in text
+assert all(character not in text for character in [chr(0x2013), chr(0x2014)]), "Travessão em texto autoral"
 print(f"Artigo: {words} palavras no resumo; {len(p.images)} figuras; referências locais e âncoras válidas.")

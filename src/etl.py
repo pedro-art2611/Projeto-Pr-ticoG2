@@ -167,6 +167,8 @@ def dictionary(path: Path) -> None:
               "A cópia bruta permanece em `raw/`, com SHA-256 e origem em `proveniencia.json`. A extração numérica pode mudar a representação textual de floats do Excel, preservando os valores numéricos. As colunas `_original` preservam os marcadores e a representação retornada pelo leitor, não os bytes XML internos.", "",
               "Arquivos derivados: `resumo_por_edicao.csv` contém n, média municipal não ponderada, mediana, quartis Q1/Q3 (interpolação linear), IQR, mínimo/máximo e desvio-padrão populacional (ddof=0). `comparacao_2023_2025.csv` contém valores pareados, deltas e decomposição simétrica de P×N. `painel_balanceado.csv` contém os mesmos resumos apenas para municípios com Ideb em todas as edições. São estatísticas entre municípios, sem ponderação por matrículas; não são o Ideb oficial do estado.", ""]
     path.write_text("\n".join(lines), encoding="utf-8", newline="\n")
+    from .metadata import append_derived_dictionary
+    append_derived_dictionary(path)
 
 
 def run(root: Path = ROOT, download: bool = False) -> pd.DataFrame:
@@ -175,11 +177,16 @@ def run(root: Path = ROOT, download: bool = False) -> pd.DataFrame:
     tidy = normalize(source)
     write_csv(root / "data/processed/ideb_rj.csv.gz", tidy)
     dictionary(root / "data/data_dictionary.md")
+    provenance = json.loads((root / "proveniencia.json").read_text(encoding="utf-8"))
+    comparison = provenance.get("official_comparison", {})
+    official_status = "comparacao de bytes pendente"
+    if comparison.get("byte_equal") and comparison.get("sha256") == SHA256:
+        official_status = "bytes iguais ao download do host oficial via HTTP; detalhes e limite de transporte em proveniencia.json"
     write_json(root / "data/processed/validacao.json", {
         "sha256_entrada": SHA256, "linhas_origem": len(source), "municipios": 92,
         "linhas_normalizadas": len(tidy), "ideb_validos": int(tidy.ideb.notna().sum()),
         "ideb_ausentes": int(tidy.ideb.isna().sum()), "imputacoes": 0,
-        "chaves_duplicadas": 0, "autenticidade_fonte_oficial": "comparacao de bytes pendente"})
+        "chaves_duplicadas": 0, "autenticidade_fonte_oficial": official_status})
     return tidy
 
 

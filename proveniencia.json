@@ -5,7 +5,7 @@
   "retrieval_url": "https://www.transparenciapolitica.com.br/site-api/v1/evidence/9ea615d5-e2f5-4550-bb86-c9350f6a3875/download",
   "mirror_evidence": "https://www.transparenciapolitica.com.br/evidencias/9ea615d5-e2f5-4550-bb86-c9350f6a3875",
   "sha256": "89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7",
-  "source_status": "third_party_archived_copy; official download inaccessible; hash matches mirror declaration; xlsx and ods match included MD5; authenticity not independently confirmed against official bytes",
+  "source_status": "archived_copy_byte_equal_to_file_retrieved_from_official_inep_host_over_http; https_unavailable; fixed_sha256_and_internal_md5_verified",
   "worksheet": "IDEB_AI_MUNICÍPIOS",
   "header_excel_row": 10,
   "data_rows_brazil": 14517,
@@ -78,5 +78,13 @@
       "ideb_valido": 92,
       "ideb_ausente": 0
     }
-  ]
+  ],
+  "official_comparison": {
+    "verified_at_utc": "2026-11-11T20:15:44.616196+00:00",
+    "retrieval_url": "http://download.inep.gov.br/ideb/resultados/divulgacao_anos_iniciais_municipios_2025.zip",
+    "transport": "HTTP; HTTPS indisponivel nesta coleta; sem autenticacao TLS",
+    "sha256": "89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7",
+    "byte_equal": true,
+    "bytes": 25308289
+  }
 }

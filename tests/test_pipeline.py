@@ -7,7 +7,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from src.etl import ROOT, RAW_NAME, acquire, normalize, parse_numbers, read_source, write_csv
-from src.analysis import analyze
+from src.analysis import analyze, correlations
+from src.metadata import DERIVED_SCHEMAS
 
 
 class PipelineTests(unittest.TestCase):
@@ -71,6 +72,32 @@ class PipelineTests(unittest.TestCase):
             restored = pd.read_csv(a, dtype={"codigo_municipio": str}, keep_default_na=False)
             self.assertEqual(len(restored), len(self.data))
             self.assertEqual(restored.ideb_original.eq("-").sum(), 14)
+
+    def test_correlations_with_ties_and_missing_pair(self):
+        # Postos de x: 1, 2.5, 2.5, 4; postos de y: 4, 2.5, 2.5, 1.
+        data = pd.DataFrame({"ideb_2023": [1, 2, 2, 3, np.nan],
+                             "ideb_2025": [8, 5, 5, 2, 9]})
+        result = correlations(data)
+        self.assertTrue(result.n_pares.eq(4).all())
+        np.testing.assert_allclose(result.coeficiente, [-1, -1], atol=1e-12)
+
+    def test_constant_series_has_no_defined_correlation(self):
+        with self.assertRaisesRegex(ValueError, "variação"):
+            correlations(pd.DataFrame({"ideb_2023": [1, 1, 1], "ideb_2025": [1, 2, 3]}))
+
+    def test_every_derived_column_has_metadata(self):
+        import json
+        with tempfile.TemporaryDirectory() as tmp:
+            analyze(self.data, Path(tmp))
+            for filename, schema in DERIVED_SCHEMAS.items():
+                if filename == "validacao.json":
+                    actual = json.loads((ROOT / "data/processed" / filename).read_text(encoding="utf-8"))
+                elif filename.endswith(".json"):
+                    actual = json.loads((Path(tmp) / "data/processed" / filename).read_text(encoding="utf-8"))
+                else:
+                    actual = pd.read_csv(Path(tmp) / "data/processed" / filename, nrows=0).columns
+                self.assertEqual(set(actual), set(schema), filename)
+                self.assertTrue(all(len(definition) == 3 and all(definition) for definition in schema.values()))
 
 
 if __name__ == "__main__":

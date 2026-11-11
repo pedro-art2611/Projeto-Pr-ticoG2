@@ -23,5 +23,7 @@
   "contribuicao_n_media": 0.21330249507452717,
   "delta_produto_medio": 0.3908176323712283,
   "painel_mediana_2005": 3.9,
-  "painel_mediana_2025": 5.9
+  "painel_mediana_2025": 5.9,
+  "correlacao_pearson": 0.826419377995864,
+  "correlacao_spearman": 0.8280868813471297
 }

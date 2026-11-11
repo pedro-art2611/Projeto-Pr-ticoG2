@@ -32,8 +32,8 @@ def figures(results: dict, assets: Path) -> None:
     ax.set(xlabel="Edição", ylabel="Ideb (0 a 10)", ylim=(0, 10), xticks=s.ano)
     ax.legend(loc="lower right", frameon=False); ax.grid(axis="y", alpha=.15)
     q = go.Figure()
-    q.add_scatter(x=s.ano.tolist(), y=s.q3.tolist(), line=dict(width=0), showlegend=False, hoverinfo="skip")
-    q.add_scatter(x=s.ano.tolist(), y=s.q1.tolist(), fill="tonexty", fillcolor="rgba(35,74,128,.15)", line=dict(width=0), name="Q1 a Q3")
+    q.add_scatter(x=s.ano.tolist(), y=s.q3.tolist(), mode="lines", line=dict(width=0, color=BLUE), showlegend=False, hoverinfo="skip")
+    q.add_scatter(x=s.ano.tolist(), y=s.q1.tolist(), mode="lines", fill="tonexty", fillcolor="rgba(35,74,128,.15)", line=dict(width=0, color=BLUE), name="Q1 a Q3")
     q.add_scatter(x=s.ano.tolist(), y=s.mediana.tolist(), mode="lines+markers", name="Mediana disponível", line=dict(color=BLUE), customdata=s.n.tolist(), hovertemplate="%{x}: %{y:.2f}<br>Municípios: %{customdata}<extra></extra>")
     q.add_scatter(x=b.ano.tolist(), y=b.mediana.tolist(), mode="lines+markers", name=f"Painel completo (n={results['metrics']['painel_balanceado_n']})", line=dict(color=TEAL, dash="dash"))
     q.update_yaxes(range=[0, 10], title="Ideb (0 a 10)"); q.update_xaxes(title="Edição", tickvals=s.ano.tolist())
@@ -83,6 +83,7 @@ def figures(results: dict, assets: Path) -> None:
     (assets / "plotly.min.js").write_text(get_plotlyjs(), encoding="utf-8", newline="\n")
     write_csv(assets / "resumo_por_edicao.csv", s)
     write_csv(assets / "comparacao_2023_2025.csv", p)
+    write_csv(assets / "correlacoes_2023_2025.csv", results["correlations"])
 
 
 def fmt(value, decimals=2):

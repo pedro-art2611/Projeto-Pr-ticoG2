@@ -16,6 +16,25 @@ def summarize(data: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def correlations(paired: pd.DataFrame) -> pd.DataFrame:
+    """Associação temporal; postos médios para empates, somente pares completos.
+
+    Spearman é Pearson aplicado aos postos. Não usa correlação entre nível
+    inicial e mudança, que compartilham o mesmo termo por construção.
+    """
+    x, y = "ideb_2023", "ideb_2025"
+    complete = paired[[x, y]].replace([np.inf, -np.inf], np.nan).dropna()
+    if len(complete) < 3 or complete[x].nunique() < 2 or complete[y].nunique() < 2:
+        raise ValueError("Correlação exige ao menos três pares e variação nos dois anos.")
+    values = {
+        "pearson": float(complete.corr(method="pearson").loc[x, y]),
+        "spearman": float(complete.rank(method="average").corr(method="pearson").loc[x, y]),
+    }
+    return pd.DataFrame([dict(variavel_x=x, variavel_y=y, metodo=method,
+                              n_pares=len(complete), coeficiente=value)
+                         for method, value in values.items()])
+
+
 def analyze(data: pd.DataFrame, root: Path = ROOT) -> dict:
     summary = summarize(data)
     panel_ids = data.groupby("codigo_municipio").ideb.count().loc[lambda s: s == 11].index
@@ -31,7 +50,8 @@ def analyze(data: pd.DataFrame, root: Path = ROOT) -> dict:
     paired["delta_produto"] = paired.rendimento_2025 * paired.nota_padronizada_2025 - paired.rendimento_2023 * paired.nota_padronizada_2023
     paired["residuo_arredondamento"] = paired.delta_ideb - paired.delta_produto
     paired["trajetoria"] = np.select([paired.delta_ideb > 1e-9, paired.delta_ideb < -1e-9], ["Aumentou", "Diminuiu"], default="Estável")
-    for name, frame in [("resumo_por_edicao", summary), ("painel_balanceado", balanced), ("comparacao_2023_2025", paired)]:
+    correlation = correlations(paired)
+    for name, frame in [("resumo_por_edicao", summary), ("painel_balanceado", balanced), ("comparacao_2023_2025", paired), ("correlacoes_2023_2025", correlation)]:
         write_csv(root / f"data/processed/{name}.csv", frame)
     s = summary.set_index("ano")
     metrics = {
@@ -50,6 +70,8 @@ def analyze(data: pd.DataFrame, root: Path = ROOT) -> dict:
         "delta_produto_medio": float(paired.delta_produto.mean()),
         "painel_mediana_2005": float(balanced.iloc[0].mediana),
         "painel_mediana_2025": float(balanced.iloc[-1].mediana),
+        "correlacao_pearson": float(correlation.loc[correlation.metodo == "pearson", "coeficiente"].iloc[0]),
+        "correlacao_spearman": float(correlation.loc[correlation.metodo == "spearman", "coeficiente"].iloc[0]),
     }
     write_json(root / "data/processed/metricas.json", metrics)
-    return {"data": data, "summary": summary, "balanced": balanced, "paired": paired, "metrics": metrics}
+    return {"data": data, "summary": summary, "balanced": balanced, "paired": paired, "correlations": correlation, "metrics": metrics}

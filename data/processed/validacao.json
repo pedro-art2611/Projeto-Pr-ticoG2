@@ -7,5 +7,5 @@
   "ideb_ausentes": 14,
   "imputacoes": 0,
   "chaves_duplicadas": 0,
-  "autenticidade_fonte_oficial": "comparacao de bytes pendente"
+  "autenticidade_fonte_oficial": "bytes iguais ao download do host oficial via HTTP; detalhes e limite de transporte em proveniencia.json"
 }
