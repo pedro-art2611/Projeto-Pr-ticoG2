@@ -1,0 +1,82 @@
+{
+  "retrieved_at_utc": "2026-11-09T22:33:07.891070+00:00",
+  "official_catalog": "https://www.gov.br/inep/pt-br/areas-de-atuacao/pesquisas-estatisticas-e-indicadores/ideb/resultados/2005-2025",
+  "official_url": "https://download.inep.gov.br/ideb/resultados/divulgacao_anos_iniciais_municipios_2025.zip",
+  "retrieval_url": "https://www.transparenciapolitica.com.br/site-api/v1/evidence/9ea615d5-e2f5-4550-bb86-c9350f6a3875/download",
+  "mirror_evidence": "https://www.transparenciapolitica.com.br/evidencias/9ea615d5-e2f5-4550-bb86-c9350f6a3875",
+  "sha256": "89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7",
+  "source_status": "third_party_archived_copy; official download inaccessible; hash matches mirror declaration; xlsx and ods match included MD5; authenticity not independently confirmed against official bytes",
+  "worksheet": "IDEB_AI_MUNICÍPIOS",
+  "header_excel_row": 10,
+  "data_rows_brazil": 14517,
+  "columns": 133,
+  "rj_municipal_rows": 92,
+  "coverage": [
+    {
+      "ano": 2005,
+      "municipios": 92,
+      "ideb_valido": 88,
+      "ideb_ausente": 4
+    },
+    {
+      "ano": 2007,
+      "municipios": 92,
+      "ideb_valido": 91,
+      "ideb_ausente": 1
+    },
+    {
+      "ano": 2009,
+      "municipios": 92,
+      "ideb_valido": 91,
+      "ideb_ausente": 1
+    },
+    {
+      "ano": 2011,
+      "municipios": 92,
+      "ideb_valido": 91,
+      "ideb_ausente": 1
+    },
+    {
+      "ano": 2013,
+      "municipios": 92,
+      "ideb_valido": 91,
+      "ideb_ausente": 1
+    },
+    {
+      "ano": 2015,
+      "municipios": 92,
+      "ideb_valido": 92,
+      "ideb_ausente": 0
+    },
+    {
+      "ano": 2017,
+      "municipios": 92,
+      "ideb_valido": 89,
+      "ideb_ausente": 3
+    },
+    {
+      "ano": 2019,
+      "municipios": 92,
+      "ideb_valido": 90,
+      "ideb_ausente": 2
+    },
+    {
+      "ano": 2021,
+      "municipios": 92,
+      "ideb_valido": 91,
+      "ideb_ausente": 1
+    },
+    {
+      "ano": 2023,
+      "municipios": 92,
+      "ideb_valido": 92,
+      "ideb_ausente": 0
+    },
+    {
+      "ano": 2025,
+      "municipios": 92,
+      "ideb_valido": 92,
+      "ideb_ausente": 0
+    }
+  ]
+}

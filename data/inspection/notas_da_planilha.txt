@@ -1,0 +1,16 @@
+
+Fonte: MEC/Inep
+Notas: ND - Número de participantes no SAEB insuficiente para que os resultados sejam divulgados;
+ND* - Solicitação de não divulgação conforme Portaria Inep nº 410 de 03 de novembro de 2011 ou Portaria Inep nº 304 de 24 de junho de 2013;
+ND*** - Município com pelo menos 20% do material extraviado, com participação insuficiente para divulgação dos resultados;
+(*) - Média calculada a partir dos resultados das escolas nas avaliações estaduais, em decorrência de extravio das provas retornadas e impossibilidade do cálculo da proficiência para o SAEB;
+(**) - Média calculada a partir dos resultados dos alunos no SAEB com participação inferior a 50%, em decorrência de extravio de provas;
+(1) - Médias do SAEB 2011 e Ideb 2011 calculados sem as escolas federais;
+(2) Ver Nota informativa do Ideb de 2021 (https://download.inep.gov.br/educacao_basica/portal_ideb/planilhas_para_download/2021/nota_informativa_ideb_2021.pdf) e 
+Relatório de Resultados do Saeb de 2021 (https://download.inep.gov.br/educacao_basica/saeb/2021/resultados/relatorio_de_resultados_do_saeb_2021_volume_1.pdf)
+para maiores informações sobre o impacto da pandemia no Ideb;
+(3) O primeiro ciclo do Ideb considera as metas pactuadas no Compromisso Todos pela Educação (https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2007/decreto/d6094.htm)
+que foram definidas (https://download.inep.gov.br/educacao_basica/portal_ideb/o_que_sao_as_metas/Nota_Tecnica_n2_metas_intermediarias_IDEB.pdf) para cada ente
+federado de 2007 até 2021;
+(4) Com o fim do primeiro ciclo do Ideb, o Inep criou um Grupo Técnico para elaborar estudo e subsidiar a atualização do Ideb e a avaliação de novas metas - maiores
+informações na Nota informativa do Ideb de 2025 (https://download.inep.gov.br/ideb/nota_informativa_ideb_2025.pdf).

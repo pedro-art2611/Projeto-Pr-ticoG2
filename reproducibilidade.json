@@ -1,0 +1,23 @@
+{
+  "data/data_dictionary.md": "762195f78e3a335f45d8b266447ac78e5b5f16a165b40e8135c2cfe595bd9ecf",
+  "data/processed/comparacao_2023_2025.csv": "177a38fe3eb5243f9f338c6c757ba3c4368ce9ee06e744f5e3b28889d26f08f4",
+  "data/processed/ideb_rj.csv.gz": "d842fa77a7753e1754d446e4a2d2c4acebfa01ff91e1d24ebdf6a51ad1f575b4",
+  "data/processed/metricas.json": "fd10ada47aa1288a3b80265e99dae883809d31090c2ed0264d3a97dab67bfa72",
+  "data/processed/painel_balanceado.csv": "cba2161b58e828c8f4cc2f5830c8c34ba932f4921a904291fe4416a640f77846",
+  "data/processed/resumo_por_edicao.csv": "c88173017d041c649fc02dedbe2e89a671c2f48bdb46c22e4caa6fd6a615a4d4",
+  "data/processed/validacao.json": "4edc06f3911f8f143297bf36980355958047fdb5f095fb87a3655f5ac35d643c",
+  "docs/assets/app.js": "7e003d265a327d3d3dbc5eeff72d78703e444ab796cef77868a8ede8cfd37110",
+  "docs/assets/comparacao.json": "7472bbbd52fd5cca5e6d680adb98b05fff858dc5636ee07eb81bf5add6cc101b",
+  "docs/assets/comparacao.svg": "95de911818c4b28669f64df81ba15bddf8775add336a475ab60b02ad493a65bb",
+  "docs/assets/comparacao_2023_2025.csv": "177a38fe3eb5243f9f338c6c757ba3c4368ce9ee06e744f5e3b28889d26f08f4",
+  "docs/assets/componentes.json": "331f71002fe41599efcbad85ca7114afa2bc4a6efc4f2d99a5fe6cb3b73be199",
+  "docs/assets/componentes.svg": "d8c016626134ab9bd1845e6c626d839cbe151bde6cdbc437b381e09d3921120a",
+  "docs/assets/distribuicao.json": "981a233f21da6f7882ef8f5916e8baf73d700e7f2c8ecdbbb556ecc7ca047c44",
+  "docs/assets/distribuicao.svg": "a44e586bed62dca2d1260c120ae9c1e0f286a8197cc2ad5a508fbb607da8c5ff",
+  "docs/assets/evolucao.json": "27da0f4b6dfe51df7eae7d0d6ceef7a4174b74f29961b9b4a776239d8c577283",
+  "docs/assets/evolucao.svg": "fddf2f808d33f7fc1a00077fd6697f0a3fb81819101b37aa15c43ee68e771a22",
+  "docs/assets/plotly.min.js": "3b6e15d45dbb7fca5bd2094291e961ddc5472cd887009e6009a56dab668d721f",
+  "docs/assets/resumo_por_edicao.csv": "c88173017d041c649fc02dedbe2e89a671c2f48bdb46c22e4caa6fd6a615a4d4",
+  "docs/assets/style.css": "5a08080f37fa421180e29695584f00b68cc7b56ef9ec1fc540391d8cf68166d8",
+  "docs/index.html": "78a3120957bdf8d492e7df9a5f20959463cce23149b9fdedcf0a82cb25203277"
+}

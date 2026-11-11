@@ -1,0 +1,28 @@
+name: Validação do projeto
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  reproducao:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: '3.14.7'
+          cache: pip
+      - name: Instala dependências congeladas
+        run: python -m pip install -r requirements.txt
+      - name: Confere ambiente
+        run: python -m pip check
+      - name: Executa testes de integridade e análise
+        run: python -m unittest discover -s tests -v
+      - name: Reproduz dados, figuras e artigo
+        run: python scripts/verify_reproducibility.py
+      - name: Confere o artigo
+        run: python scripts/check_site.py
+      - name: Executa o notebook
+        run: python scripts/execute_notebook.py

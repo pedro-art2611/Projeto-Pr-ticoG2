@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.zip binary
+*.gz binary
+*.svg text eol=lf
+*.ipynb text eol=lf
+data/raw/** -text -whitespace
+data/inspection/** -text -whitespace
+*.svg whitespace=-blank-at-eol
+docs/assets/plotly.min.js -whitespace

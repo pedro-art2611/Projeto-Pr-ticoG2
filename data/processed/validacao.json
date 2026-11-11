@@ -1,0 +1,11 @@
+{
+  "sha256_entrada": "89100286327ab07a4b1318ba51974d62da90af334f663bedf6374cb67298a3e7",
+  "linhas_origem": 14517,
+  "municipios": 92,
+  "linhas_normalizadas": 1012,
+  "ideb_validos": 998,
+  "ideb_ausentes": 14,
+  "imputacoes": 0,
+  "chaves_duplicadas": 0,
+  "autenticidade_fonte_oficial": "comparacao de bytes pendente"
+}

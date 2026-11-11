@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "Ao reutilizar o código, as figuras ou a análise, cite este projeto e a fonte primária Inep."
+title: "Evolução e dispersão do Ideb nas redes municipais do Rio de Janeiro: anos iniciais, 2005–2025"
+authors:
+  - family-names: "Brandão Murillo"
+    given-names: "Pedro Artur"
+    affiliation: "Unilasalle-RJ"
+  - family-names: "Teixeira Silva"
+    given-names: "Daniel de Oliveira"
+    affiliation: "Unilasalle-RJ"
+repository-code: "https://github.com/pedro-art2611/Projeto-Pr-ticoG2"
+url: "https://pedro-art2611.github.io/Projeto-Pr-ticoG2/"
+version: "1.0.0"
+date-released: "2026-11-11"
+license: MIT
+keywords:
+  - Ideb
+  - educação básica
+  - Rio de Janeiro
+  - análise exploratória
+  - Python
+  - FAIR
