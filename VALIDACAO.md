@@ -19,7 +19,7 @@ Versões estritas em `requirements.txt`; `pip check` sem conflitos.
 - 998 combinações Ideb/P/N dentro da tolerância de arredondamento de 0,0501.
 - Oito testes automatizados do pipeline aprovados.
 - Notebook inteiro executado sem erro por `scripts/execute_notebook.py`.
-- Reexecução do pipeline com hashes idênticos para os produtos registrados
+- Reexecução do pipeline com hashes idênticos para os 21 produtos registrados
   em `reproducibilidade.json` (dados, tabelas, métricas, artigo e figuras).
 - Resumo do artigo com 198 palavras; quatro figuras com texto alternativo;
   referências a arquivos locais e âncoras válidas.
@@ -46,4 +46,14 @@ Versões estritas em `requirements.txt`; `pip check` sem conflitos.
 ## Publicação
 
 Repositório e pasta de publicação: `pedro-art2611/Projeto-Pr-ticoG2`, branch
-`main`, `/docs`. Estado de deploy será atualizado após confirmação do GitHub.
+`main`, `/docs`. GitHub Pages ativado e build confirmado como `built` em
+11/11/2026; URL pública respondeu HTTP 200.
+
+Artigo: https://pedro-art2611.github.io/Projeto-Pr-ticoG2/
+
+O commit de implementação `3580f230318f69500ba1fc42e6a83253e5352a88` passou
+também na instalação em ambiente novo do GitHub Actions (Windows/Python 3.14.7):
+dependências, oito testes, reprodução por hashes, artigo e notebook.
+
+- [Validação independente no CI](https://github.com/pedro-art2611/Projeto-Pr-ticoG2/actions/runs/43079306668)
+- [Publicação concluída](https://github.com/pedro-art2611/Projeto-Pr-ticoG2/actions/runs/43081572476)
